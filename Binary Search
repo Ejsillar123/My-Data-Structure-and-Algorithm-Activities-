@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class BinarySearchExample {
+
+    public static void main(String[] args) {
+        Scanner go = new Scanner(System.in);
+
+        // As you can see , I input the size of the array
+        System.out.print("Enter the number of elements: ");
+        int num = go.nextInt();
+
+        // As you can see, I declare an array of size num
+        int[] arr = new int[num];
+
+        // As you can, I input the elements of the array
+        System.out.println("Enter " + num + " sorted integers:");
+        for (int i = 0; i < num; i++) {
+            System.out.print("integer" + i + (":"));
+            arr[i] = go.nextInt();
+            
+        }
+
+        // As you can see, I input the element to search for
+        System.out.print("Enter the element to search: ");
+        int sorted = go.nextInt();
+
+        // As you can see, I perform binary search with this cide right here
+        int output = binarySearch(arr, sorted);
+
+        // As you can see, I display the result in this following code(the println)
+        if (output == -1) {
+            System.out.println("Element not found.");
+        } else {
+            System.out.println("Element found at index: " + output);
+        }
+
+        go.close();
+    }
+
+    // As you can see, This is the binary search function
+    public static int binarySearch(int[] arr, int key) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            // As you can see, Check if the key is present at mid
+            if (arr[mid] == key) {
+                return mid;
+            }
+
+            // As you can see, If key is greater, Then ignore the left half
+            if (arr[mid] < key) {
+                low = mid + 1;
+            }
+            // As you can see, If key is smaller,  Then ignore the right half
+            else {
+                high = mid - 1;
+            }
+        }
+
+        // As you can see, When key is not present in the array then use the (return -1)
+        return -1;
+    }
+}
