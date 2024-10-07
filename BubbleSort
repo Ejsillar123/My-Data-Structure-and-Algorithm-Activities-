@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class BubbleSort {
+    
+    // As you can see, This is the main method at the top
+    public static void main(String[] args) {
+        Scanner go = new Scanner(System.in);
+
+        // As you can see, I input the size of array
+        System.out.print("Enter the number of elements: ");
+        int num = go.nextInt();
+
+        // As you can see, I input the array elements
+        int[] arr = new int[num];
+        System.out.println("Enter the " + num + (" elements:"));
+        for (int i = 0; i < num; i++) {
+            System.out.print("integer " + i + (":"));
+            arr[i] = go.nextInt();
+        }
+
+        // As you can see, This is the call bubble sort method
+        bubbleSort(arr);
+
+        // As you can see, This is the output sorted array
+        System.out.println("Sorted array:");
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+        go.close();
+    }
+
+    // As you can see, This is the bubble sort method
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        boolean swapped;
+        
+        // As you can see, To perform bubble sort you have to use this following code
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // As you can see, To Swap arr[j] and arr[j + 1], use this following  code below
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // As you can see, If no elements were swapped, array is already sorted
+            if (!swapped) break;
+        }
+    }
+}
